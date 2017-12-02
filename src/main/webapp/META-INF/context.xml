@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/qss-db" auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/demo"
+              username="root"
+              password="123"
+              maxActive="50"
+              maxIdle="30"
+              maxWait="10000" />
+</Context>
