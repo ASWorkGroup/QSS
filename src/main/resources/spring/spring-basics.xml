@@ -7,6 +7,8 @@
        xsi:schemaLocation="
 http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/jee
+http://www.springframework.org/schema/jee/spring-jee.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -17,6 +19,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         <property name="mapperLocations" value="classpath:mybatis/*.xml" />
     </bean>
 
-    <jee:jndi-lookup id="mysqlDataSource" jndi-name="java:comp/env/jdbc/qss-db"/>
+    <jee:jndi-lookup id="mysqlDataSource" jndi-name="java:comp/env/jdbc/QSSdb"/>
 
 </beans>

@@ -26,4 +26,12 @@
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 
+  <resource-ref >
+    <description></description>
+    <res-ref-name>jdbc/QSSdb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+  </resource-ref>
+
 </web-app>
