@@ -1,5 +1,6 @@
 package com.qss.auth;
 
+import com.qss.consts.AuthConsts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +16,6 @@ import java.io.IOException;
 public class AuthFilter implements Filter {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private final String AuthTokenKey = "AUTH_TOKEN_KEY";
-
     private  FilterConfig config;
     private ServletContext servletContext;
     public void destroy() {
@@ -31,7 +30,7 @@ public class AuthFilter implements Filter {
             //无需登录，放行
             chain.doFilter(request, response);
         }else{//不存在的访问地址留待其他机制去处理！特定部件只管特定事情！
-            Object user=request.getSession().getAttribute(AuthTokenKey);
+            Object user=request.getSession().getAttribute(AuthConsts.AuthTokenKey);
             if(user==null){
                 //检查带过来的Cookie,前提是上次登录设置了该Cookie
                 Cookie[] cookies = request.getCookies();
@@ -39,7 +38,7 @@ public class AuthFilter implements Filter {
                 if(cookies != null) {
                     for(int i = 0; i < cookies.length; i ++) {
                         String cookieName = cookies[i].getName();
-                        if(AuthTokenKey.equals(cookieName)) {
+                        if(AuthConsts.AuthTokenKey.equals(cookieName)) {
                             authToken = cookies[i].getValue();
                             break;
                         }

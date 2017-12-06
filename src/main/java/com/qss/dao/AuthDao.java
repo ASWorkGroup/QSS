@@ -1,6 +1,8 @@
 package com.qss.dao;
 
+import com.qss.model.LoginFormInfo;
 import com.qss.model.SampleModel;
+import com.qss.model.SysUserInfo;
 
 import java.util.List;
 
@@ -9,4 +11,5 @@ import java.util.List;
  */
 
 public interface AuthDao {
+    SysUserInfo getUserInfo(LoginFormInfo loginFormInfo);
 }
