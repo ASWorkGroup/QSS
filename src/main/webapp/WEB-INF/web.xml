@@ -13,8 +13,19 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/spring-basics.xml</param-value>
   </context-param>
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>com.qss.auth.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.qss.auth.AuthListener</listener-class>
   </listener>
   <servlet>
     <servlet-name>qss</servlet-name>

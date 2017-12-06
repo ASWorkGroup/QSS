@@ -5,10 +5,11 @@ CREATE TABLE `QSS`.`sample` (
   `name` VARCHAR(45) NULL,
   `sex` VARCHAR(45) NULL,
   PRIMARY KEY (`id`));
+USE QSS;
 
 /* Table SysUserInfo */
 
-CREATE TABLE `qss`.`sysuserinfo` (
+CREATE TABLE `QSS`.`sysuserinfo` (
 
   `ID` VARCHAR(20) NOT NULL DEFAULT '',
 
