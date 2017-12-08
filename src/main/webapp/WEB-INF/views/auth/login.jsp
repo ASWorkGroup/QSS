@@ -7,7 +7,7 @@
 LOGIN
 
 <form id="login_form" action="/auth/doLogin.do" method="post">
-    <input id="name" name="name"/>
+    <input id="id" name="id"/>
     <input id="password" name="password"/>
     <button type="submit" value="提交">提交</button>
 </form>

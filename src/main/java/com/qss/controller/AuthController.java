@@ -18,6 +18,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.net.URLEncoder;
 
 /**
  * Created by YuanAiQing on 2017/12/6.
@@ -37,18 +38,31 @@ public class AuthController {
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(LoginFormInfo loginFormInfo, HttpServletResponse response, HttpSession httpSession){
+    public String doLogin(LoginFormInfo loginFormInfo, String url, HttpServletResponse response, HttpSession httpSession){
         SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
-        String tokeKey = authToken.getTokenKey();
+        if (sysUserInfo != null) {
 
-        Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
-        Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, GsonUtil.gson.toJson(sysUserInfo));
-        response.addCookie(cookie1);
-        response.addCookie(cookie2);
+            String tokeKey = authToken.getTokenKey();
 
-        httpSession.setAttribute(AuthConsts.AuthTokenKey, tokeKey);
-        httpSession.setAttribute(AuthConsts.AuthUserInfoKey, sysUserInfo);
-        return "auth/login";
+            Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
+
+            Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
+            response.addCookie(cookie1);
+            response.addCookie(cookie2);
+
+            httpSession.setAttribute(AuthConsts.AuthTokenKey, tokeKey);
+            httpSession.setAttribute(AuthConsts.AuthUserInfoKey, sysUserInfo);
+
+            if (url!=null && url.length()!=0) {
+                return String.format("redirect:%s", url);
+            }
+            else {
+                return "redirect:/home/index.do";
+            }
+        }
+        else {
+            return "auth/login";
+        }
     }
 }
