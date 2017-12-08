@@ -48,7 +48,8 @@ public class AuthFilter implements Filter {
                     //已登录，放行
                     chain.doFilter(request, response);
                 }else{//没登录也没有上次登录时效信息
-                    request.getRequestDispatcher("/auth/login.do").forward(request, response);
+                    String requestUrl = ((HttpServletRequest) req).getRequestURL().toString();
+                    ((HttpServletResponse) resp).sendRedirect("/auth/login.do?url=" + requestUrl);
                 }
             }else{
                 //已登录，放行
