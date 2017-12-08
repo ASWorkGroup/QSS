@@ -37,7 +37,7 @@ public class AuthController {
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(@RequestAttribute LoginFormInfo loginFormInfo, HttpServletResponse response, HttpSession httpSession){
+    public String doLogin(LoginFormInfo loginFormInfo, HttpServletResponse response, HttpSession httpSession){
         SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
         String tokeKey = authToken.getTokenKey();
