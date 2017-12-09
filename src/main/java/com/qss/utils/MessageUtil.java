@@ -1,6 +1,7 @@
 package com.qss.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 public class MessageUtil {
 
     @Autowired
+    @Qualifier("messageSource")
     private MessageSource messages;
 
     private String getMessage(String key, String ... messages) {
