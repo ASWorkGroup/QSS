@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="com.qss.controller, com.qss.dao, com.qss.service.impl, com.qss.dao">
+    <context:component-scan base-package="com.qss.controller, com.qss.dao, com.qss.service.impl, com.qss.dao, com.qss.utils">
         <context:include-filter type="regex" expression=".*Dao"/>
     </context:component-scan>
 
@@ -32,6 +32,23 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <bean  id="MapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.qss.dao" />
         <!--<property name="markerInterface" value="com.qss.dao.SuperMapper"/>-->
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="clientlanguage"/>
+        <!-- in seconds. If set to -1, the cookie is not persisted (deleted when browser shuts down) -->
+        <property name="cookieMaxAge" value="100000"/>
+    </bean>
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages.format</value>
+                <!--<value>exceptions</value>-->
+                <!--<value>windows</value>-->
+            </list>
+        </property>
     </bean>
 
 </beans>

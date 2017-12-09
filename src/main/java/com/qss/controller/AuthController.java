@@ -1,6 +1,7 @@
 package com.qss.controller;
 
 import com.qss.consts.AuthConsts;
+import com.qss.consts.LocaleConsts;
 import com.qss.model.LoginFormInfo;
 import com.qss.model.SysUserInfo;
 import com.qss.service.IAuth;
@@ -46,8 +47,8 @@ public class AuthController {
             String tokeKey = authToken.getTokenKey();
 
             Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
-
             Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
+            Cookie cookie3 = new Cookie(LocaleConsts.ClientLanguageKey, "zh-cn");
             response.addCookie(cookie1);
             response.addCookie(cookie2);
 
