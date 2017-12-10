@@ -1,4 +1,4 @@
-package com.qss.model;
+package com.qss.model.m00_user;
 
 /**
  * Created by YuanAiQing on 2017/12/6.

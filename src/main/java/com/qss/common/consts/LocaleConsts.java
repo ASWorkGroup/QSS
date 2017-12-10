@@ -1,4 +1,4 @@
-package com.qss.consts;
+package com.qss.common.consts;
 
 /**
  * Created by YuanAiQing on 2017/12/6.

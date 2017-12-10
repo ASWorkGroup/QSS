@@ -1,24 +1,24 @@
-package com.qss.utils;
+package com.qss.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.support.RequestContextUtils;
+
+import java.util.Locale;
 
 /**
  * Created by yuanaiqing on 9/12/17.
  */
-
 @Component
 public class MessageUtil {
 
     @Autowired
     @Qualifier("messageSource")
-    private MessageSource messages;
+    private MessageSource messageSource;
 
-    private String getMessage(String key, String ... messages) {
-        String message = this.messages.getMessage(key, messages, null);//todo local
+    public String getMessage(String key, Locale locale, String ... messages) {
+        String message = this.messageSource.getMessage(key, messages, locale);
         return message;
     }
 }

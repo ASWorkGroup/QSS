@@ -1,13 +1,11 @@
-package com.qss.service.impl;
+package com.qss.service.c00_login.impl;
 
-import com.qss.dao.AuthDao;
-import com.qss.model.LoginFormInfo;
-import com.qss.model.SysUserInfo;
-import com.qss.service.IAuth;
+import com.qss.dao.c00_login.AuthDao;
+import com.qss.model.c00_login.LoginFormInfo;
+import com.qss.model.m00_user.SysUserInfo;
+import com.qss.service.c00_login.IAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * Created by YuanAiQing on 2017/12/6.

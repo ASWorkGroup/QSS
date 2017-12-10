@@ -1,6 +1,6 @@
-package com.qss.auth;
+package com.qss.common.auth;
 
-import com.qss.consts.AuthConsts;
+import com.qss.common.consts.AuthConsts;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,11 +22,10 @@ public class AuthFilter implements Filter {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-        logger.info("do filter");
         HttpServletRequest request=(HttpServletRequest) req;
         HttpServletResponse response=(HttpServletResponse) resp;
         String uri=request.getRequestURI();//从应用开始的部分地址
-        if(uri.toLowerCase().contains("login")){
+        if(uri.toLowerCase().contains("c0001")){
             //无需登录，放行
             chain.doFilter(request, response);
         }else{//不存在的访问地址留待其他机制去处理！特定部件只管特定事情！
@@ -49,7 +48,7 @@ public class AuthFilter implements Filter {
                     chain.doFilter(request, response);
                 }else{//没登录也没有上次登录时效信息
                     String requestUrl = ((HttpServletRequest) req).getRequestURL().toString();
-                    ((HttpServletResponse) resp).sendRedirect(((HttpServletRequest) req).getContextPath() + "/auth/login.do?url=" + requestUrl);
+                    ((HttpServletResponse) resp).sendRedirect(((HttpServletRequest) req).getContextPath() + "/c0001/index.do?url=" + requestUrl);
                 }
             }else{
                 //已登录，放行

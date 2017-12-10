@@ -16,7 +16,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="com.qss.controller, com.qss.dao, com.qss.service.impl, com.qss.dao, com.qss.utils">
+    <context:component-scan base-package="com.qss.controller, com.qss.dao, com.qss.service.c00_login.impl, com.qss.dao, com.qss.common.utils">
         <context:include-filter type="regex" expression=".*Dao"/>
     </context:component-scan>
 
@@ -44,9 +44,9 @@ http://www.springframework.org/schema/context/spring-context.xsd">
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>messages.format</value>
-                <!--<value>exceptions</value>-->
-                <!--<value>windows</value>-->
+                <value>i18n.error</value>
+                <value>i18n.info</value>
+                <value>i18n.message</value>
             </list>
         </property>
     </bean>

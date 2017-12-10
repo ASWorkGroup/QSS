@@ -1,6 +1,6 @@
-package com.qss.service.impl;
+package com.qss.service.c00_login.impl;
 
-import com.qss.service.IAuthToken;
+import com.qss.service.c00_login.IAuthToken;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;

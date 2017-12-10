@@ -5,7 +5,7 @@
               driverClassName="com.mysql.jdbc.Driver"
               url="jdbc:mysql://rm-uf609yg6k16wn57p5yo.mysql.rds.aliyuncs.com:3306/QSS"
               username="root"
-              password="123456"
+              password="Password1"
               maxActive="50"
               maxIdle="30"
               maxWait="10000" />

@@ -1,22 +1,19 @@
 package com.qss.controller;
 
-import com.qss.consts.AuthConsts;
-import com.qss.consts.LocaleConsts;
-import com.qss.model.LoginFormInfo;
-import com.qss.model.SysUserInfo;
-import com.qss.service.IAuth;
-import com.qss.service.IAuthToken;
-import com.qss.utils.GsonUtil;
+import com.qss.common.consts.AuthConsts;
+import com.qss.model.c00_login.LoginFormInfo;
+import com.qss.model.m00_user.SysUserInfo;
+import com.qss.service.c00_login.IAuth;
+import com.qss.service.c00_login.IAuthToken;
+import com.qss.common.utils.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,22 +25,23 @@ import java.util.Locale;
  * Created by YuanAiQing on 2017/12/6.
  */
 @Controller
-@RequestMapping("/auth")
-public class AuthController {
+@RequestMapping("/c0001")
+public class C0001Controller extends AbstractController {
     @Autowired
     private IAuth auth;
 
     @Autowired
     private IAuthToken authToken;
 
-    @RequestMapping("/login")
-    public String login(ModelMap model){
-        return "auth/login";
+    @RequestMapping("/index")
+    public String index(ModelMap model){
+        return "common/c0001_login";
     }
 
-    @RequestMapping("/doLogin")
+    @PostMapping("/login")
     public String doLogin(LoginFormInfo loginFormInfo, @RequestParam("url") String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
         Locale locale = RequestContextUtils.getLocale(request);
+        String message = messageUtil.getMessage("message", locale, "");
 
         SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
@@ -52,8 +50,9 @@ public class AuthController {
             String tokeKey = authToken.getTokenKey();
 
             Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
+            cookie1.setSecure(true);
             Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
-//            Cookie cookie3 = new Cookie(LocaleConsts.ClientLanguageKey, "zh-cn");
+            cookie2.setSecure(true);
             response.addCookie(cookie1);
             response.addCookie(cookie2);
 
@@ -68,7 +67,7 @@ public class AuthController {
             }
         }
         else {
-            return "auth/login";
+            return "common/c0001_login";
         }
     }
 }

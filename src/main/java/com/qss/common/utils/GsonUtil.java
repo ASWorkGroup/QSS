@@ -1,4 +1,4 @@
-package com.qss.utils;
+package com.qss.common.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
