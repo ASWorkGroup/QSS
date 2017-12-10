@@ -49,7 +49,7 @@ public class AuthFilter implements Filter {
                     chain.doFilter(request, response);
                 }else{//没登录也没有上次登录时效信息
                     String requestUrl = ((HttpServletRequest) req).getRequestURL().toString();
-                    ((HttpServletResponse) resp).sendRedirect("/auth/login.do?url=" + requestUrl);
+                    ((HttpServletResponse) resp).sendRedirect(((HttpServletRequest) req).getContextPath() + "/auth/login.do?url=" + requestUrl);
                 }
             }else{
                 //已登录，放行

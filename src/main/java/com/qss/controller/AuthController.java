@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.net.URLEncoder;
+import java.util.Locale;
 
 /**
  * Created by YuanAiQing on 2017/12/6.
@@ -39,7 +42,9 @@ public class AuthController {
     }
 
     @RequestMapping("/doLogin")
-    public String doLogin(LoginFormInfo loginFormInfo, @RequestAttribute String url, HttpServletResponse response, HttpSession httpSession){
+    public String doLogin(LoginFormInfo loginFormInfo, @RequestParam("url") String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
+        Locale locale = RequestContextUtils.getLocale(request);
+
         SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
         if (sysUserInfo != null) {
@@ -48,7 +53,7 @@ public class AuthController {
 
             Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
             Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
-            Cookie cookie3 = new Cookie(LocaleConsts.ClientLanguageKey, "zh-cn");
+//            Cookie cookie3 = new Cookie(LocaleConsts.ClientLanguageKey, "zh-cn");
             response.addCookie(cookie1);
             response.addCookie(cookie2);
 
