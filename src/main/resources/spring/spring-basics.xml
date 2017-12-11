@@ -46,6 +46,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
             <list>
                 <value>i18n/errors</value>
                 <value>i18n/infos</value>
+                <value>i18n/form</value>
             </list>
         </property>
     </bean>
