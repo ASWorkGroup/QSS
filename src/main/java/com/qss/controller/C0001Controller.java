@@ -41,7 +41,7 @@ public class C0001Controller extends AbstractController {
     @PostMapping("/login")
     public String doLogin(LoginFormInfo loginFormInfo, @RequestParam("url") String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
         Locale locale = RequestContextUtils.getLocale(request);
-        String message = messageUtil.getMessage("message", locale, "");
+        String message = messageUtil.getMessage("I001", locale, "");
 
         SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
