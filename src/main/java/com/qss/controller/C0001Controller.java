@@ -3,12 +3,13 @@ package com.qss.controller;
 import com.qss.common.consts.AuthConsts;
 import com.qss.model.c00_login.LoginFormInfo;
 import com.qss.model.m00_user.SysUserInfo;
-import com.qss.service.c00_login.IAuth;
-import com.qss.service.c00_login.IAuthToken;
+import com.qss.service.c00_login.AuthService;
+import com.qss.service.c00_login.AuthTokenService;
 import com.qss.common.utils.GsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,12 +29,12 @@ import java.util.Locale;
 @RequestMapping("/c0001")
 public class C0001Controller extends AbstractController {
     @Autowired
-    private IAuth auth;
+    private AuthService auth;
 
     @Autowired
-    private IAuthToken authToken;
+    private AuthTokenService authToken;
 
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String index(ModelMap model){
         return "common/c0001_login";
     }

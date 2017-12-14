@@ -16,7 +16,11 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
     <mvc:annotation-driven />
-    <context:component-scan base-package="com.qss.controller, com.qss.dao, com.qss.service.c00_login.impl, com.qss.dao, com.qss.common.utils">
+    <context:component-scan base-package="
+    com.qss.controller
+    , com.qss.dao, com.qss.service.m00_user.impl
+    , com.qss.dao, com.qss.service.c00_login.impl
+    , com.qss.dao, com.qss.common.utils">
         <context:include-filter type="regex" expression=".*Dao"/>
     </context:component-scan>
 
