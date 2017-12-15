@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="default.console" template="/WEB-INF/views/template/default.jsp">
+        <put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+        <put-attribute name="body" value="/WEB-INF/views/template/body.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+    </definition>
+
+    <definition name="*.*.portal" extends="default.console" >
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_portal.jsp" />
+    </definition>
+
+    <definition name="*.*.*.auth" extends="default.console" >
+        <put-attribute name="header" value="/WEB-INF/views/{1}/{2}_{3}_auth_header.jsp" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_{3}_auth.jsp" />
+        <put-attribute name="footer" value="" />
+    </definition>
+
+    <definition name="*.*.*.list" extends="default.console" >
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_{3}_list.jsp" />
+    </definition>
+
+    <definition name="*.*.*.detail" extends="default.console" >
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_{3}_detail.jsp" />
+    </definition>
+
+    <definition name="*.*" template="/WEB-INF/views/template/error.jsp">
+    </definition>
+
+    <definition name="*.*.*" template="/WEB-INF/views/template/error.jsp">
+    </definition>
+
+</tiles-definitions>

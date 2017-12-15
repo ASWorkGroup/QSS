@@ -36,7 +36,7 @@ public class C0001Controller extends AbstractController {
 
     @GetMapping("/index")
     public String index(ModelMap model){
-        return "common/c0001_login";
+        return "common.c0001.login.auth";
     }
 
     @PostMapping("/login")
@@ -64,11 +64,11 @@ public class C0001Controller extends AbstractController {
                 return String.format("redirect:%s", url);
             }
             else {
-                return "redirect:/home/index.do";
+                return "home.default.portal";
             }
         }
         else {
-            return "common/c0001_login";
+            return "common.c0001.login.auth";
         }
     }
 }

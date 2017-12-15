@@ -27,13 +27,13 @@ public class M0001Controller extends AbstractController {
 
     @GetMapping("/index")
     public String index(ModelMap model){
-        return "master/m0001_user_list";
+        return "master.m0001.user.list";
     }
 
     @GetMapping("/list")
     public String list(LoginFormInfo loginFormInfo, ModelMap modelMap, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
         List<SysUserInfo> users = userService.getUserList(null);
         modelMap.addAttribute("users", users);
-        return "master/m0001_user_list";
+        return "master.m0001.user.list";
     }
 }
