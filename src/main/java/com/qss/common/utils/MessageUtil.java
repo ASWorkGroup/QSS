@@ -17,6 +17,10 @@ public class MessageUtil {
     @Qualifier("messageSource")
     private MessageSource messageSource;
 
+    public String getMessage(String key, Locale locale) {
+        return getMessage(key, locale, "");
+    }
+
     public String getMessage(String key, Locale locale, String ... messages) {
         String message = this.messageSource.getMessage(key, messages, locale);
         return message;
