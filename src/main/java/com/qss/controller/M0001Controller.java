@@ -26,11 +26,11 @@ public class M0001Controller extends AbstractController {
     private UserService userService;
 
     @GetMapping("/index")
-    public String index(ModelMap model){
+    public String index(){
         return "master.m0001.user.list";
     }
 
-    @GetMapping("/list")
+    @PostMapping("/post")
     public String list(LoginFormInfo loginFormInfo, ModelMap modelMap, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
         List<SysUserInfo> users = userService.getUserList(null);
         modelMap.addAttribute("users", users);

@@ -35,7 +35,7 @@ public class C0001Controller extends AbstractController {
     private AuthTokenService authToken;
 
     @GetMapping("/index")
-    public String index(ModelMap model){
+    public String index(){
         return "common.c0001.login.auth";
     }
 

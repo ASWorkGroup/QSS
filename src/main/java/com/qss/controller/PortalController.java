@@ -35,7 +35,7 @@ public class PortalController extends AbstractController {
     private AuthTokenService authToken;
 
     @GetMapping("/index")
-    public String index(ModelMap model){
+    public String index(){
         return "home.default.portal";
     }
 

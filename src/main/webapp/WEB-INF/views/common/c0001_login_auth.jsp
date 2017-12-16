@@ -8,7 +8,7 @@
     }
 %>
 
-<form id="login_form" action="<%=actionUrl%>" method="post">
+<%--<form id="login_form" action="<%=actionUrl%>" method="post">--%>
     <div class="form-group col-lg-12">
         <label for="id"  class="col-lg-1 control-label">用户名</label>
         <div class="col-lg-2">
@@ -28,4 +28,4 @@
             <button class="btn btn-default" type="submit"><spring:message code="C0001.submit"/></button>
         </div>
     </div>
-</form>
+<%--</form>--%>

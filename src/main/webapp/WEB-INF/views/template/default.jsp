@@ -27,12 +27,14 @@
     <div class="row">
         <div class="col-lg-12"><tiles:insertAttribute name="menu" /></div>
     </div>
-    <div class="row">
-        <div class="col-lg-12"><tiles:insertAttribute name="toolbar" /></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12"><tiles:insertAttribute name="body" /></div>
-    </div>
+    <form id="form1" action="<%=request.getAttribute("form1_action")%>" method="post">
+        <div class="row">
+            <div class="col-lg-12"><tiles:insertAttribute name="toolbar" /></div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12"><tiles:insertAttribute name="body" /></div>
+        </div>
+    </form>
     <div class="row">
         <div class="col-lg-12"><tiles:insertAttribute name="uploader" /></div>
     </div>

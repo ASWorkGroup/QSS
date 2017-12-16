@@ -2,6 +2,6 @@
 <div class="row">
     <div class="col-lg-10">&nbsp;</div>
     <div class="col-lg-2">
-        <button type="button">保存</button>
+        <button type="submit">保存</button>
     </div>
 </div>
