@@ -40,7 +40,7 @@ public class C0001Controller extends AbstractController {
     }
 
     @PostMapping("/login")
-    public String doLogin(LoginFormInfo loginFormInfo, @RequestParam("url") String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
+    public String doLogin(LoginFormInfo loginFormInfo, @RequestParam(name="url", required = false) String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
         Locale locale = RequestContextUtils.getLocale(request);
         String message = messageUtil.getMessage("I001", locale, "");
 
@@ -60,11 +60,11 @@ public class C0001Controller extends AbstractController {
             httpSession.setAttribute(AuthConsts.AuthTokenKey, tokeKey);
             httpSession.setAttribute(AuthConsts.AuthUserInfoKey, sysUserInfo);
 
-            if (url!=null && url.length()!=0) {
+            if (url!=null && !url.toLowerCase().equals("null") && url.length()!=0) {
                 return String.format("redirect:%s", url);
             }
             else {
-                return "home.default.portal";
+                return String.format("redirect:%s", request.getContextPath() + "/portal/index.do");
             }
         }
         else {

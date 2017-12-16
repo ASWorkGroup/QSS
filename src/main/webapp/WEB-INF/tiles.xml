@@ -4,8 +4,19 @@
     <definition name="default.console" template="/WEB-INF/views/template/default.jsp">
         <put-attribute name="header" value="/WEB-INF/views/template/header.jsp" />
         <put-attribute name="menu" value="/WEB-INF/views/template/menu.jsp" />
+        <put-attribute name="toolbar" value="" />
         <put-attribute name="body" value="/WEB-INF/views/template/body.jsp" />
+        <put-attribute name="uploader" value="" />
         <put-attribute name="footer" value="/WEB-INF/views/template/footer.jsp" />
+    </definition>
+
+    <definition name="default.list" extends="default.console">
+        <put-attribute name="toolbar" value="/WEB-INF/views/template/toolbar_for_list_page.jsp" />
+    </definition>
+
+    <definition name="default.detail" extends="default.console">
+        <put-attribute name="toolbar" value="/WEB-INF/views/template/toolbar_for_detail_page.jsp" />
+        <put-attribute name="uploader" value="/WEB-INF/views/template/uploader.jsp" />
     </definition>
 
     <definition name="*.*.portal" extends="default.console" >
@@ -19,11 +30,11 @@
         <put-attribute name="footer" value="" />
     </definition>
 
-    <definition name="*.*.*.list" extends="default.console" >
+    <definition name="*.*.*.list" extends="default.list" >
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_{3}_list.jsp" />
     </definition>
 
-    <definition name="*.*.*.detail" extends="default.console" >
+    <definition name="*.*.*.detail" extends="default.detail" >
         <put-attribute name="body" value="/WEB-INF/views/{1}/{2}_{3}_detail.jsp" />
     </definition>
 

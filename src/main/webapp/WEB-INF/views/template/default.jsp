@@ -28,7 +28,13 @@
         <div class="col-lg-12"><tiles:insertAttribute name="menu" /></div>
     </div>
     <div class="row">
+        <div class="col-lg-12"><tiles:insertAttribute name="toolbar" /></div>
+    </div>
+    <div class="row">
         <div class="col-lg-12"><tiles:insertAttribute name="body" /></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12"><tiles:insertAttribute name="uploader" /></div>
     </div>
     <div class="row">
         <div class="col-lg-12"><hr/></div>

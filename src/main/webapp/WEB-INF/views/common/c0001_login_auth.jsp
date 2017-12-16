@@ -1,6 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" language="java" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<form id="login_form" action="<%=request.getContextPath()%>/c0001/login.do?url=<%=request.getParameter("url")%>" method="post">
+<%
+    String actionUrl=request.getContextPath() + "/c0001/login.do";
+    String url=request.getParameter("url");
+    if (url!=null && !url.equals("null") && url.length()!=0){
+        actionUrl += "?url=" + url;
+    }
+%>
+
+<form id="login_form" action="<%=actionUrl%>" method="post">
     <div class="form-group col-lg-12">
         <label for="id"  class="col-lg-1 control-label">用户名</label>
         <div class="col-lg-2">
