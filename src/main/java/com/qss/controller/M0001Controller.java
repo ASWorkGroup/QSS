@@ -3,6 +3,8 @@ package com.qss.controller;
 import com.qss.model.c00_login.LoginFormInfo;
 import com.qss.model.m00_user.SysUserInfo;
 import com.qss.service.m00_user.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/m0001")
 public class M0001Controller extends AbstractController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private UserService userService;
 

@@ -93,4 +93,16 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         <property name="suffix" value=".png" />
     </bean>
 
+    <bean id="enumResource" class="org.springframework.core.io.ClassPathResource">
+        <constructor-arg name="path" value="enums.properties"></constructor-arg>
+    </bean>
+
+    <bean id="prop" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <array>
+                <value>classpath:enums.properties</value>
+            </array>
+        </property>
+    </bean>
+
 </beans>

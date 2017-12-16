@@ -6,6 +6,8 @@ import com.qss.model.c00_login.LoginFormInfo;
 import com.qss.model.m00_user.SysUserInfo;
 import com.qss.service.c00_login.AuthService;
 import com.qss.service.c00_login.AuthTokenService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,6 +30,8 @@ import java.util.Locale;
 @Controller
 @RequestMapping("/portal")
 public class PortalController extends AbstractController {
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private AuthService auth;
 
