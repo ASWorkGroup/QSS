@@ -35,7 +35,7 @@ public class QSSEnum {
                 String[] entryKVs = entryPair.split("=");
                 String k = entryKVs[0];
                 String v = entryKVs[1];
-                String vWithLocales = messageUtil.getMessage(k, locale);
+                String vWithLocales = messageUtil.getMessage(v, locale);
 
                 map.put(k, vWithLocales);
             }
