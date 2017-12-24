@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qss.dao.m00_user.UserDao">
+    <resultMap id="userList" type="com.qss.model.m00_user.SysUserInfo">
+        <id property="ID" column="ID"></id>
+        <result property="NAME" column="NAME"></result>
+        <result property="ENABLE" column="ENABLE"></result>
+        <result property="PASSWORD" column="PASSWORD"></result>
+        <result property="COMPANY" column="COMPANY"></result>
+        <result property="EMAIL" column="EMAIL"></result>
+        <result property="LANGUAGE" column="LANGUAGE"></result>
+        <result property="DEFAULTCOUNTRYREGION" column="DEFAULTCOUNTRYREGION"></result>
+        <result property="PREFERREDTIMEZONE" column="PREFERREDTIMEZONE"></result>
+        <result property="RECVERSION" column="RECVERSION"></result>
+        <result property="RECID" column="RECID"></result>
+    </resultMap>
+    <select id="getUserInfo" parameterType="com.qss.model.m00_user.UserListQueryCondition" resultMap="userList">
+        select * from sysuserinfo WHERE ENABLE=1
+        <if test="id != null">
+            AND `ID`=#{id}
+        </if>
+    </select>
+</mapper>

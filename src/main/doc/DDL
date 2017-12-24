@@ -21,7 +21,7 @@ CREATE TABLE `QSS`.`sysuserinfo` (
 
   `PASSWORD` VARCHAR(20) NOT NULL DEFAULT '',
 
-  `COMPANY` VARCHAR(8) NOT NULL DEFAULT '',
+  `OMOperatingUnitNumber` VARCHAR(8) NOT NULL DEFAULT '',
 
   `EMAIL` VARCHAR(80) DEFAULT '',
 
@@ -36,3 +36,19 @@ CREATE TABLE `QSS`.`sysuserinfo` (
   `RECID` INT NOT NULL DEFAULT 0,
 
   PRIMARY KEY (`ID`));
+
+/* */
+
+CREATE TABLE `QSS`.`OMOPeratingUnit` (
+
+  `OMOperatingUnitNumber` VARCHAR(8) NOT NULL DEFAULT '',
+
+  `OMOperatingUnitType` INT NOT NULL DEFAULT 0,
+
+  `NAME` VARCHAR(80) NOT NULL DEFAULT '',
+
+  `RECVERSION` INT NOT NULL DEFAULT 0,
+
+  `RECID` INT NOT NULL DEFAULT 0,
+
+  PRIMARY KEY (`OMOperatingUnitNumber`));
