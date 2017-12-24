@@ -1,2 +1,2 @@
-insert into QSS.sample values (1, 'Mimiko', 'female');
-insert into QSS.sample values (2, 'KenTarou', 'male');
+//insert into QSS.sample values (1, 'Mimiko', 'female');
+//insert into QSS.sample values (2, 'KenTarou', 'male');
