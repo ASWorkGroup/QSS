@@ -40,34 +40,35 @@ public class C0001Controller extends AbstractController {
     }
 
     @PostMapping("/login")
-    public String doLogin(LoginFormInfo loginFormInfo, @RequestParam(name="url", required = false) String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession){
-        Locale locale = RequestContextUtils.getLocale(request);
-        String message = messageUtil.getMessage("I001", locale);
+    public String doLogin(LoginFormInfo loginFormInfo, @RequestParam(name="url", required = false) String url, HttpServletResponse response, HttpServletRequest request, HttpSession httpSession) {
+        try {
+            String message = getMessage("I001");
 
-        SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
+            SysUserInfo sysUserInfo = auth.validateUser(loginFormInfo);
 
-        if (sysUserInfo != null) {
+            if (sysUserInfo != null) {
 
-            String tokeKey = authToken.getTokenKey();
+                String tokeKey = authToken.getTokenKey();
 
-            Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
-            cookie1.setSecure(true);
-            Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
-            cookie2.setSecure(true);
-            response.addCookie(cookie1);
-            response.addCookie(cookie2);
+                Cookie cookie1 = new Cookie(AuthConsts.AuthTokenKey, tokeKey);
+                cookie1.setSecure(true);
+                Cookie cookie2 = new Cookie(AuthConsts.AuthUserInfoKey, URLEncoder.encode(GsonUtil.gson.toJson(sysUserInfo)));
+                cookie2.setSecure(true);
+                response.addCookie(cookie1);
+                response.addCookie(cookie2);
 
-            httpSession.setAttribute(AuthConsts.AuthTokenKey, tokeKey);
-            httpSession.setAttribute(AuthConsts.AuthUserInfoKey, sysUserInfo);
+                httpSession.setAttribute(AuthConsts.AuthTokenKey, tokeKey);
+                httpSession.setAttribute(AuthConsts.AuthUserInfoKey, sysUserInfo);
 
-            if (url!=null && !url.toLowerCase().equals("null") && url.length()!=0) {
-                return String.format("redirect:%s", url);
+                if (url != null && !url.toLowerCase().equals("null") && url.length() != 0) {
+                    return String.format("redirect:%s", url);
+                } else {
+                    return String.format("redirect:%s", request.getContextPath() + "/portal/index.do");
+                }
+            } else {
+                return "common.c0001.login.auth";
             }
-            else {
-                return String.format("redirect:%s", request.getContextPath() + "/portal/index.do");
-            }
-        }
-        else {
+        } catch (Exception ex) {
             return "common.c0001.login.auth";
         }
     }
