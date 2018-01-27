@@ -33,6 +33,10 @@
     <servlet-name>qss</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>qss</servlet-name>
+    <url-pattern>/master/*</url-pattern>
+  </servlet-mapping>
 
   <resource-ref >
     <description></description>

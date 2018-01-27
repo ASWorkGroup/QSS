@@ -21,10 +21,17 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     , com.qss.dao
     , com.qss.service.*.impl
     , com.qss.service.*.impl
-    , com.qss.common.utils
-    , com.qss.common.locale">
+    , com.qss.common.utils">
         <context:include-filter type="regex" expression=".*Dao"/>
     </context:component-scan>
+
+    <bean id="pageContainerManagerBean" class="com.qss.common.page.PageContainerManagerBean">
+        <constructor-arg>
+            <props>
+                <prop key="config_file_path"></prop>
+            </props>
+        </constructor-arg>
+    </bean>
 
     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
         <property name="converters">
