@@ -36,46 +36,55 @@ public class MasterController extends AbstractController {
     private PageContainer pageContainer;
 
     @GetMapping("/{pageId}/portal")
-    public String index(ModelMap modelMap, @PathVariable String pageId){
+    public String index(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
         return "master.common.portal";
     }
 
     @GetMapping("/{pageId}/portal/define/searchcondition")
     @ResponseBody
-    public List<SearchConditionDefine> getSearchConditionDefine(ModelMap modelMap, @PathVariable String pageId){
+    public List<SearchConditionDefine> getSearchConditionDefine(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
         List<SearchConditionDefine> searchConditionDefines = new ArrayList<SearchConditionDefine>();
-        searchConditionDefines = pageContainer.getDefine(pageId, "searchcondition", searchConditionDefines.getClass());
+        searchConditionDefines = pageContainer.getDefine(pageId, "searchcondition", SearchConditionDefine.class);
+        for (int i=0; i<searchConditionDefines.size(); i++){
+            SearchConditionDefine searchConditionDefine = searchConditionDefines.get(i);
+            String displayTextResourceId = searchConditionDefine.getDisplayTextResourceId();
+            String localeMessage = getMessage(displayTextResourceId);
+            searchConditionDefines.get(i).setDisplayText(localeMessage);
+        }
+//        for (SearchConditionDefine searchConditionDefine : searchConditionDefines){
+//            searchConditionDefine.setDisplayText(getMessage(searchConditionDefine.getDisplayTextResourceId()));
+//        }
         return searchConditionDefines;
     }
 
     @GetMapping("/{pageId}/portal/define/listitem")
     @ResponseBody
-    public List<ListItemDefine> getListItemDefine(ModelMap modelMap, @PathVariable String pageId){
+    public List<ListItemDefine> getListItemDefine(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
         List<ListItemDefine> listItemDefines = new ArrayList<ListItemDefine>();
-        listItemDefines = pageContainer.getDefine(pageId, "listitem", listItemDefines.getClass());
+        listItemDefines = pageContainer.getDefine(pageId, "listitem", ListItemDefine.class);
         return listItemDefines;
     }
 
-    @PostMapping("/{pageId}/portal/list")
+    @PostMapping("/{pageId}/portal/list/query")
     @ResponseBody
-    public Map<String, String> list(ModelMap modelMap, @PathVariable String pageId){
+    public Map<String, String> querylist(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
         return new HashMap<String, String>();
     }
 
     @GetMapping("/{pageId}/portal/item/{id}")
     @ResponseBody
-    public Map<String, String> getItem(ModelMap modelMap, @PathVariable String pageId, @PathVariable String id){
+    public Map<String, String> getItem(ModelMap modelMap, @PathVariable("pageId") String pageId, @PathVariable("id") String id){
         modelMap.addAttribute("pageId", pageId);
         return new HashMap<String, String>();
     }
 
     @PostMapping("/{pageId}/portal/item/save/{id}")
     @ResponseBody
-    public Map<String, String> save(ModelMap modelMap, @PathVariable String pageId, @PathVariable String id){
+    public Map<String, String> save(ModelMap modelMap, @PathVariable("pageId") String pageId, @PathVariable("id") String id){
         modelMap.addAttribute("pageId", pageId);
         return new HashMap<String, String>();
     }

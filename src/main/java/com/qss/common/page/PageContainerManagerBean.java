@@ -1,9 +1,13 @@
 package com.qss.common.page;
 
+import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.lang.Nullable;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -41,5 +45,22 @@ public class PageContainerManagerBean implements FactoryBean<PageContainer>, Ini
 
     public void afterPropertiesSet() throws Exception {
         pageContainer = new PageContainerImpl();
+
+
+        SearchConditionDefine searchConditionDefine1 = new SearchConditionDefine();
+        searchConditionDefine1.setId("id");
+        searchConditionDefine1.setDisplayTextResourceId("M0001.list.id");
+        searchConditionDefine1.setType("string");
+        searchConditionDefine1.setList(false);
+        searchConditionDefine1.setListSource("");
+        pageContainer.registerDefine("sysuser", "searchcondition", searchConditionDefine1);
+
+        SearchConditionDefine searchConditionDefine2 = new SearchConditionDefine();
+        searchConditionDefine2.setId("name");
+        searchConditionDefine2.setDisplayTextResourceId("M0001.list.Name");
+        searchConditionDefine2.setType("string");
+        searchConditionDefine2.setList(false);
+        searchConditionDefine2.setListSource("");
+        pageContainer.registerDefine("sysuser", "searchcondition", searchConditionDefine2);
     }
 }

@@ -1,11 +1,10 @@
 package com.qss.common.page;
 
+import com.google.gson.reflect.TypeToken;
 import com.qss.common.utils.GsonUtil;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.lang.reflect.Type;
+import java.util.*;
 
 /**
  * Created by yuanaiqing on 26/1/18.
@@ -13,25 +12,40 @@ import java.util.Set;
 public class PageContainerImpl implements PageContainer {
 
     //Map<pageId, Map<condition, content>>
-    private Map<String, Map<String, String>> defines = new HashMap<String, Map<String, String>>();
+    private Map<String, Map<String, List<String>>> defines = new HashMap<String, Map<String, List<String>>>();
 
-    public <T> T getDefine(String pageId, String zone, Class<T> clazz) {
-        Map<String, String> zoneDefine = defines.get(pageId);
+    public <T> List<T> getDefine(String pageId, String zone, Class<T> clazz) {
+        Map<String, List<String>> zoneDefine = defines.get(pageId);
         if (zoneDefine == null) {
             return null;
         }
-        String _define = zoneDefine.get(zone);
-        if (_define == null) {
+        List<String> _defines = zoneDefine.get(zone);
+        if (_defines == null) {
             return null;
         }
-        T define = GsonUtil.gson.fromJson(_define, clazz);
-        return define;
+        List<T> defines = new ArrayList<T>();
+        for (String _define : _defines) {
+            T define = GsonUtil.gson.fromJson(_define, clazz);
+            defines.add(define);
+        }
+        return defines;
     }
 
     public <T> void registerDefine(String pageId, String zone, T define) {
         String _define = GsonUtil.gson.toJson(define);
-        Map<String, String> zoneDefine = new HashMap<String, String>();
-        zoneDefine.put(zone, _define);
-        defines.put(pageId, zoneDefine);
+
+        Map<String, List<String>> zoneDefine = defines.get(pageId);
+        if (zoneDefine == null) {
+            zoneDefine = new HashMap<String, List<String>>();
+            defines.put(pageId, zoneDefine);
+        }
+
+        List<String> list = zoneDefine.get(zone);
+        if (list == null){
+            list = new ArrayList<String>();
+            zoneDefine.put(zone, list);
+        }
+
+        list.add(_define);
     }
 }

@@ -5,7 +5,8 @@ package com.qss.common.page;
  */
 public class SearchConditionDefine {
     private String id;
-    private String name;
+    private String displayTextResourceId;
+    private String displayText;
     private String type;
     private int size;
     private boolean isList;
@@ -19,12 +20,20 @@ public class SearchConditionDefine {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDisplayTextResourceId() {
+        return displayTextResourceId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDisplayTextResourceId(String displayTextResourceId) {
+        this.displayTextResourceId = displayTextResourceId;
+    }
+
+    public String getDisplayText() {
+        return displayText;
+    }
+
+    public void setDisplayText(String displayText) {
+        this.displayText = displayText;
     }
 
     public String getType() {

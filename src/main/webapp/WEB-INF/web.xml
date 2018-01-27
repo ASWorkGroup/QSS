@@ -29,22 +29,22 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>qss</servlet-name>-->
+    <!--<url-pattern>/master/**</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>qss</servlet-name>-->
+    <!--<url-pattern>/master/*/portal/*</url-pattern>-->
+  <!--</servlet-mapping>-->
+  <!--<servlet-mapping>-->
+    <!--<servlet-name>qss</servlet-name>-->
+    <!--<url-pattern>/master/*/portal/*/*</url-pattern>-->
+  <!--</servlet-mapping>-->
   <servlet-mapping>
     <servlet-name>qss</servlet-name>
     <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>qss</servlet-name>
-    <url-pattern>/master/*</url-pattern>
-  </servlet-mapping>
-
-  <resource-ref >
-    <description></description>
-    <res-ref-name>jdbc/QSSdb</res-ref-name>
-    <res-type>javax.sql.DataSource</res-type>
-    <res-auth>Container</res-auth>
-    <res-sharing-scope>Shareable</res-sharing-scope>
-  </resource-ref>
 
   <filter>
     <filter-name>utf8-encoding</filter-name>

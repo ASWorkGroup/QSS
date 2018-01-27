@@ -21,7 +21,7 @@ public class AbstractController{
     @Autowired
     private  HttpServletRequest request;
 
-    protected String getMessage(String key) throws Exception{
+    protected String getMessage(String key){
 
         return messageUtil.getMessage(key, RequestContextUtils.getLocale(request));
     }
