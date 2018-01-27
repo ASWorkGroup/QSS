@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<define>
+    <page id="sysuser" table="sysuserinfo">
+        <searchCondition>
+            <item><![CDATA[{"id":"id","displayTextResourceId":"M0001.list.id","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+            <item><![CDATA[{"id":"name","displayTextResourceId":"M0001.list.Name","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+        </searchCondition>
+        <listitem>
+
+        </listitem>
+    </page>
+</define>

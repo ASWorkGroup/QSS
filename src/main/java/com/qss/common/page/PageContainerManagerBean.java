@@ -6,6 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.lang.Nullable;
 
 import java.lang.reflect.Type;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -14,17 +15,19 @@ import java.util.Properties;
  * Created by yuanaiqing on 26/1/18.
  */
 public class PageContainerManagerBean implements FactoryBean<PageContainer>, InitializingBean {
-    private final String DEFAULT_PROPERTY_KEY_CONFIG_FILE_PATH = "classpath:pageContainer.properties";
+    private final String DEFAULT_PROPERTY_KEY_CONFIG_FILE_PATH = "classpath:defines.xml";
     public static final String PROPERTY_KEY_CONFIG_FILE_PATH = "config_file_path";
 
     private String configFilePath;
     private PageContainer pageContainer;
 
+    public PageContainerManagerBean(){
+        configFilePath = DEFAULT_PROPERTY_KEY_CONFIG_FILE_PATH;
+    }
+
     public PageContainerManagerBean(Properties properties){
-        if (properties.contains(PROPERTY_KEY_CONFIG_FILE_PATH)){
-            configFilePath = properties.getProperty(PROPERTY_KEY_CONFIG_FILE_PATH);
-        }
-        else {
+        configFilePath = properties.getProperty(PROPERTY_KEY_CONFIG_FILE_PATH);
+        if (configFilePath == null){
             configFilePath = DEFAULT_PROPERTY_KEY_CONFIG_FILE_PATH;
         }
     }
@@ -46,21 +49,13 @@ public class PageContainerManagerBean implements FactoryBean<PageContainer>, Ini
     public void afterPropertiesSet() throws Exception {
         pageContainer = new PageContainerImpl();
 
+        String _configFilePath = configFilePath;
+        if (configFilePath.startsWith("classpath")) {
+            URL url = this.getClass().getClassLoader().getResource(configFilePath.replace("classpath:", ""));
+            _configFilePath = url.getFile();
+        }
 
-        SearchConditionDefine searchConditionDefine1 = new SearchConditionDefine();
-        searchConditionDefine1.setId("id");
-        searchConditionDefine1.setDisplayTextResourceId("M0001.list.id");
-        searchConditionDefine1.setType("string");
-        searchConditionDefine1.setList(false);
-        searchConditionDefine1.setListSource("");
-        pageContainer.registerDefine("sysuser", "searchcondition", searchConditionDefine1);
-
-        SearchConditionDefine searchConditionDefine2 = new SearchConditionDefine();
-        searchConditionDefine2.setId("name");
-        searchConditionDefine2.setDisplayTextResourceId("M0001.list.Name");
-        searchConditionDefine2.setType("string");
-        searchConditionDefine2.setList(false);
-        searchConditionDefine2.setListSource("");
-        pageContainer.registerDefine("sysuser", "searchcondition", searchConditionDefine2);
+        Configuration configuration = new Configuration(pageContainer, _configFilePath);
+        configuration.parse();
     }
 }

@@ -28,7 +28,7 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <bean id="pageContainerManagerBean" class="com.qss.common.page.PageContainerManagerBean">
         <constructor-arg>
             <props>
-                <prop key="config_file_path"></prop>
+                <prop key="config_file_path">classpath:pagedefine/defines.xml</prop>
             </props>
         </constructor-arg>
     </bean>

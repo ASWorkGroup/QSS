@@ -114,6 +114,11 @@
       <artifactId>hibernate-c3p0</artifactId>
       <version>5.2.6.Final</version>
     </dependency>
+    <dependency>
+      <groupId>dom4j</groupId>
+      <artifactId>dom4j</artifactId>
+      <version>1.6.1</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>qss</finalName>
