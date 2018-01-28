@@ -121,4 +121,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         </property>
     </bean>
 
+    <bean id="pageDao" class="com.qss.common.page.PageDaoImpl"></bean>
+
 </beans>

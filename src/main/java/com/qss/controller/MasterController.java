@@ -1,9 +1,6 @@
 package com.qss.controller;
 
-import com.qss.common.page.ListItemDefine;
-import com.qss.common.page.PageAttributeDefine;
-import com.qss.common.page.PageContainer;
-import com.qss.common.page.SearchConditionDefine;
+import com.qss.common.page.*;
 import com.qss.model.c00_login.LoginFormInfo;
 import com.qss.model.m00_user.SysUserInfo;
 import com.qss.service.m00_user.UserService;
@@ -11,16 +8,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import sun.jvm.hotspot.debugger.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by YuanAiQing on 2017/12/6.
@@ -31,7 +27,7 @@ public class MasterController extends AbstractController {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private UserService userService;
+    private PageDao pageDao;
 
     @Autowired
     private PageContainer pageContainer;
@@ -75,14 +71,35 @@ public class MasterController extends AbstractController {
         modelMap.addAttribute("pageId", pageId);
         List<ListItemDefine> listItemDefines = new ArrayList<ListItemDefine>();
         listItemDefines = pageContainer.getDefine(pageId, "listitem", ListItemDefine.class);
+        listItemDefines.forEach((item)->{
+            String displayTextResourceId = item.getDisplayTextResourceId();
+            String localeMessage = getMessage(displayTextResourceId);
+            item.setDisplayText(localeMessage);
+        });
         return listItemDefines;
     }
 
     @PostMapping("/{pageId}/autopage/list/query")
     @ResponseBody
-    public Map<String, String> querylist(ModelMap modelMap, @PathVariable("pageId") String pageId){
+    public List<Map<String, Object>> querylist(@RequestBody Map<String,String> map, ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
-        return new HashMap<String, String>();
+
+        List<PageAttributeDefine> pageAttributeDefines = pageContainer.getDefine(pageId, "pageattribute", PageAttributeDefine.class);
+        if (pageAttributeDefines==null || pageAttributeDefines.size()==0){
+            throw new PageDefineConfigParsingException(String.format("pageId: %s's attributes are lacked.", pageId));
+        }
+        String table = pageAttributeDefines.get(0).getTable();
+
+        List<ListItemDefine> listItemDefines = new ArrayList<ListItemDefine>();
+        listItemDefines = pageContainer.getDefine(pageId, "listitem", ListItemDefine.class);
+        List<String> itemColumns = new ArrayList<>();
+        listItemDefines.forEach((item)->{
+            itemColumns.add(item.getId());
+        });
+
+        List<Map<String, Object>> result = pageDao.selectMasterItemList(table, itemColumns, map);
+
+        return result;
     }
 
     @GetMapping("/{pageId}/autopage/item/{id}")

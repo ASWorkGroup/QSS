@@ -14,7 +14,8 @@
 
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <%--<script src="https://code.jquery.com/jquery-3.3.1.min.js"/>--%>
+
+
     <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>

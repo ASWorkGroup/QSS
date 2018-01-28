@@ -2,6 +2,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-json/2.6.0/jquery.json.min.js"></script>
 <script src="/js/master.common.js"></script>
 
 <div class="panel panel-primary">
@@ -11,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-10">&nbsp;</div>
                 <div class="col-lg-2">
-                    <button type="button" class="btn btn-primary" onclick="doQuery()">查询</button>
+                    <button id="btnQuery" name="btnQuery" type="button" class="btn btn-primary">查询</button>
                 </div>
             </div>
         </div>
