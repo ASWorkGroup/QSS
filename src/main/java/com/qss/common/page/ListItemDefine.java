@@ -5,8 +5,9 @@ package com.qss.common.page;
  */
 public class ListItemDefine {
     private String id;
-    private String name;
-    private String type;
+    private boolean display;
+    private String displayTextResourceId;
+    private String displayText;
     private int size;
 
     public String getId() {
@@ -17,20 +18,20 @@ public class ListItemDefine {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDisplayTextResourceId() {
+        return displayTextResourceId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDisplayTextResourceId(String displayTextResourceId) {
+        this.displayTextResourceId = displayTextResourceId;
     }
 
-    public String getType() {
-        return type;
+    public String getDisplayText() {
+        return displayText;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDisplayText(String displayText) {
+        this.displayText = displayText;
     }
 
     public int getSize() {
@@ -41,4 +42,11 @@ public class ListItemDefine {
         this.size = size;
     }
 
+    public boolean isDisplay() {
+        return display;
+    }
+
+    public void setDisplay(boolean display) {
+        this.display = display;
+    }
 }

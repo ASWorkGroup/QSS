@@ -5,13 +5,13 @@
     <table class="table table-hover table-bordered">
         <thead>
         <tr>
-            <td><spring:message code="M0001.list.id"/></td>
-            <td><spring:message code="M0001.list.Name"/></td>
-            <td><spring:message code="M0001.list.COMPANY"/></td>
-            <td><spring:message code="M0001.list.EMAIL"/></td>
-            <td><spring:message code="M0001.list.LANGUAGE"/></td>
-            <td><spring:message code="M0001.list.DEFAULTCOUNTRYREGION"/></td>
-            <td><spring:message code="M0001.list.PREFERREDTIMEZONE"/></td>
+            <td><spring:message code="SYSUSER.id"/></td>
+            <td><spring:message code="SYSUSER.Name"/></td>
+            <td><spring:message code="SYSUSER.COMPANY"/></td>
+            <td><spring:message code="SYSUSER.EMAIL"/></td>
+            <td><spring:message code="SYSUSER.LANGUAGE"/></td>
+            <td><spring:message code="SYSUSER.DEFAULTCOUNTRYREGION"/></td>
+            <td><spring:message code="SYSUSER.PREFERREDTIMEZONE"/></td>
         </tr>
         </thead>
         <tbody>

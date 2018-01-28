@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <define>
     <page id="sysuser" table="sysuserinfo">
+        <pageAttribute>
+            <![CDATA[{"titleResourceId":"SYSUSER.formTitle","title":"", "table":"sysuserinfo"}]]>
+        </pageAttribute>
         <searchCondition>
-            <item><![CDATA[{"id":"id","displayTextResourceId":"M0001.list.id","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            <item><![CDATA[{"id":"id","displayTextResourceId":"SYSUSER.id","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
             </item>
-            <item><![CDATA[{"id":"name","displayTextResourceId":"M0001.list.Name","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            <item><![CDATA[{"id":"name","displayTextResourceId":"SYSUSER.Name","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+            <item><![CDATA[{"id":"company","displayTextResourceId":"SYSUSER.COMPANY","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+            <item><![CDATA[{"id":"email","displayTextResourceId":"SYSUSER.EMAIL","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
             </item>
         </searchCondition>
         <listitem>
-
+            <item><![CDATA[{"id":"id","display":true, "displayTextResourceId":"SYSUSER.id","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Name","display":true,"displayTextResourceId":"SYSUSER.Name","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"COMPANY","display":true,"displayTextResourceId":"SYSUSER.COMPANY","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"EMAIL","display":true,"displayTextResourceId":"SYSUSER.EMAIL","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"LANGUAGE","display":true,"displayTextResourceId":"SYSUSER.LANGUAGE","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"DEFAULTCOUNTRYREGION","display":true,"displayTextResourceId":"SYSUSER.DEFAULTCOUNTRYREGION","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"PREFERREDTIMEZONE","display":true,"displayTextResourceId":"SYSUSER.PREFERREDTIMEZONE","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"RECVERSION","display":false,"displayTextResourceId":"SYSUSER.RECVERSION","displayText":null,"size":0}]]>
+            </item>
         </listitem>
     </page>
 </define>

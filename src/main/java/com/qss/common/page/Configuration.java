@@ -76,7 +76,14 @@ public class Configuration {
                     Iterator<Element> pageSubIterator = pageElement.elementIterator();
                     while(pageSubIterator.hasNext()) {
                         Element pageSubElement = pageSubIterator.next();
-                        if (pageSubElement.getName().toLowerCase().equals("searchcondition")){
+                        if (pageSubElement.getName().toLowerCase().equals("pageattribute")){
+
+                            String _attribute = pageSubElement.getText();
+
+                            PageAttributeDefine attribute = GsonUtil.gson.fromJson(_attribute, PageAttributeDefine.class);
+                            pageContainer.registerDefine(pageId, "pageattribute", attribute);
+                        }
+                        else if (pageSubElement.getName().toLowerCase().equals("searchcondition")){
 
                             Iterator<Element> searchconditionIterator = pageSubElement.elementIterator();
                             while(searchconditionIterator.hasNext()) {

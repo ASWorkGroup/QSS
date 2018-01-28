@@ -1,6 +1,7 @@
 package com.qss.controller;
 
 import com.qss.common.page.ListItemDefine;
+import com.qss.common.page.PageAttributeDefine;
 import com.qss.common.page.PageContainer;
 import com.qss.common.page.SearchConditionDefine;
 import com.qss.model.c00_login.LoginFormInfo;
@@ -35,13 +36,25 @@ public class MasterController extends AbstractController {
     @Autowired
     private PageContainer pageContainer;
 
-    @GetMapping("/{pageId}/portal")
+    @GetMapping("/{pageId}/autopage")
     public String index(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
-        return "master.common.portal";
+        return "master.common.autopage";
     }
 
-    @GetMapping("/{pageId}/portal/define/searchcondition")
+    @GetMapping("/{pageId}/autopage/define/pageattribute")
+    @ResponseBody
+    public List<PageAttributeDefine> getPageAttributeDefine(ModelMap modelMap, @PathVariable("pageId") String pageId){
+        modelMap.addAttribute("pageId", pageId);
+        List<PageAttributeDefine> pageAttributeDefines = new ArrayList<>();
+        pageAttributeDefines = pageContainer.getDefine(pageId, "pageattribute", PageAttributeDefine.class);
+        pageAttributeDefines.forEach((attr)->{
+            attr.setTitle(getMessage(attr.getTitleResourceId()));
+        });
+        return pageAttributeDefines;
+    }
+
+    @GetMapping("/{pageId}/autopage/define/searchcondition")
     @ResponseBody
     public List<SearchConditionDefine> getSearchConditionDefine(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
@@ -53,13 +66,10 @@ public class MasterController extends AbstractController {
             String localeMessage = getMessage(displayTextResourceId);
             searchConditionDefines.get(i).setDisplayText(localeMessage);
         }
-//        for (SearchConditionDefine searchConditionDefine : searchConditionDefines){
-//            searchConditionDefine.setDisplayText(getMessage(searchConditionDefine.getDisplayTextResourceId()));
-//        }
         return searchConditionDefines;
     }
 
-    @GetMapping("/{pageId}/portal/define/listitem")
+    @GetMapping("/{pageId}/autopage/define/listitem")
     @ResponseBody
     public List<ListItemDefine> getListItemDefine(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
@@ -68,21 +78,21 @@ public class MasterController extends AbstractController {
         return listItemDefines;
     }
 
-    @PostMapping("/{pageId}/portal/list/query")
+    @PostMapping("/{pageId}/autopage/list/query")
     @ResponseBody
     public Map<String, String> querylist(ModelMap modelMap, @PathVariable("pageId") String pageId){
         modelMap.addAttribute("pageId", pageId);
         return new HashMap<String, String>();
     }
 
-    @GetMapping("/{pageId}/portal/item/{id}")
+    @GetMapping("/{pageId}/autopage/item/{id}")
     @ResponseBody
     public Map<String, String> getItem(ModelMap modelMap, @PathVariable("pageId") String pageId, @PathVariable("id") String id){
         modelMap.addAttribute("pageId", pageId);
         return new HashMap<String, String>();
     }
 
-    @PostMapping("/{pageId}/portal/item/save/{id}")
+    @PostMapping("/{pageId}/autopage/item/save/{id}")
     @ResponseBody
     public Map<String, String> save(ModelMap modelMap, @PathVariable("pageId") String pageId, @PathVariable("id") String id){
         modelMap.addAttribute("pageId", pageId);
