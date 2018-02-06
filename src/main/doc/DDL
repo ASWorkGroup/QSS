@@ -44,6 +44,8 @@ CREATE TABLE `QSS`.`OMOPeratingUnit` (
   `OMOperatingUnitNumber` VARCHAR(8) NOT NULL DEFAULT '',
 
   `OMOperatingUnitType` INT NOT NULL DEFAULT 0,
+  
+  `CURRENCY` VARCHAR(3) NOT NULL DEFAULT '',
 
   `NAME` VARCHAR(80) NOT NULL DEFAULT '',
 
