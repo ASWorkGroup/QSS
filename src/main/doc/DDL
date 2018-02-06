@@ -37,7 +37,7 @@ CREATE TABLE `QSS`.`sysuserinfo` (
 
   PRIMARY KEY (`ID`));
 
-/* */
+/* Table OMOPeratingUnit */
 
 CREATE TABLE `QSS`.`OMOPeratingUnit` (
 
@@ -54,3 +54,23 @@ CREATE TABLE `QSS`.`OMOPeratingUnit` (
   `RECID` INT NOT NULL DEFAULT 0,
 
   PRIMARY KEY (`OMOperatingUnitNumber`));
+  
+  /* Table Currency */
+
+CREATE TABLE `QSS`.`Currency` (
+
+  `CurrencyCode` VARCHAR(3) NOT NULL DEFAULT '',
+
+  `Txt` VARCHAR(60) NOT NULL DEFAULT '',
+
+  PRIMARY KEY (`CurrencyCode`));
+  
+  /* Table CustGroup */
+
+CREATE TABLE `QSS`.`CustGroup` (
+
+  `CustGroup` VARCHAR(10) NOT NULL DEFAULT '',
+
+  `Name` VARCHAR(60) NOT NULL DEFAULT '',
+
+  PRIMARY KEY (`CustGroup`));
