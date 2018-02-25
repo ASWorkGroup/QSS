@@ -133,13 +133,15 @@ $.fn.serializeObject = function() {
 };
 
 $(document).ready(function(){
-    $.get("/master/sysuser/autopage/define/pageattribute.do", function (data, textStatus, jqXHR){
+    var pathname = window.location.pathname;
+    var pageId = pathname.substring(8, pathname.indexOf('/', 8));
+    $.get("/master/"+pageId+"/autopage/define/pageattribute.do", function (data, textStatus, jqXHR){
         $.each(data, function(id, define){
             document.title = define.title;
         });
     }, "json");
 
-    $.get("/master/sysuser/autopage/define/searchcondition.do", function (data, textStatus, jqXHR){
+    $.get("/master/"+pageId+"/autopage/define/searchcondition.do", function (data, textStatus, jqXHR){
         var searchConditionSize = data.length;
         var i=0;
         var parentDiv = $("#searchCondition");

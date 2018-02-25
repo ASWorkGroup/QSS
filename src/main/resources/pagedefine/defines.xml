@@ -33,4 +33,53 @@
             </item>
         </listitem>
     </page>
+    <page id="cust" table="CustTable">
+        <pageAttribute>
+            <![CDATA[{"titleResourceId":"CUST.formTitle","title":"", "table":"CustTable"}]]>
+        </pageAttribute>
+        <searchCondition>
+            <item><![CDATA[{"id":"AccountNum","displayTextResourceId":"CUST.accountNum","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+            <item><![CDATA[{"id":"Name","displayTextResourceId":"CUST.name","displayText":null,"type":"string","size":0,"isList":false,"listSource":""}]]>
+            </item>
+        </searchCondition>
+        <listitem>
+            <item><![CDATA[{"id":"AccountNum","display":true, "displayTextResourceId":"CUST.accountNum","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Name","display":true,"displayTextResourceId":"CUST.name","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"CustGroup","display":true,"displayTextResourceId":"CUST.custGroup","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"FullName","display":true,"displayTextResourceId":"CUST.fullName","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"CompanyName","display":true,"displayTextResourceId":"CUST.companyName","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"OMOperatingUnitNumber","display":true,"displayTextResourceId":"CUST.omOperationgUnitNumber","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Phone","display":true,"displayTextResourceId":"CUST.phone","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Fax","display":true,"displayTextResourceId":"CUST.fax","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Email","display":true,"displayTextResourceId":"CUST.email","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"ZipCode","display":true,"displayTextResourceId":"CUST.zipCode","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Country","display":true,"displayTextResourceId":"CUST.country","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"State","display":true,"displayTextResourceId":"CUST.state","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"City","display":true,"displayTextResourceId":"CUST.city","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"County","display":true,"displayTextResourceId":"CUST.county","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Address1","display":true,"displayTextResourceId":"CUST.address1","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"Address2","display":true,"displayTextResourceId":"CUST.address2","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"RECVERSION","display":false,"displayTextResourceId":"CUST.recversion","displayText":null,"size":0}]]>
+            </item>
+            <item><![CDATA[{"id":"RECID","display":false,"displayTextResourceId":"CUST.recid","displayText":null,"size":0}]]>
+            </item>
+        </listitem>
+    </page>
 </define>
